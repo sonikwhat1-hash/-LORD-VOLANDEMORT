@@ -1,0 +1,584 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина | LORD VOLDEMORT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #1a1a1a;
+            color: #d4af37;
+            min-height: 100vh;
+        }
+
+        nav {
+            background-color: #2c2c2c;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+            .nav-menu a {
+                color: #d4af37;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .nav-menu a:hover {
+                    color: #fff;
+                }
+
+        .cart-icon {
+            font-size: 1.2em;
+            cursor: pointer;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 2rem 0;
+            color: #d4af37;
+        }
+
+        .cart-container {
+            background-color: #2c2c2c;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #444;
+            margin-bottom: 1rem;
+        }
+
+            .cart-item img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item h3 {
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+            .quantity-control button {
+                background-color: #444;
+                color: #d4af37;
+                border: none;
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+                border-radius: 3px;
+                font-weight: bold;
+            }
+
+                .quantity-control button:hover {
+                    background-color: #555;
+                }
+
+            .quantity-control span {
+                font-weight: bold;
+                min-width: 30px;
+                text-align: center;
+            }
+
+        .remove-btn {
+            background-color: #740001;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+            .remove-btn:hover {
+                background-color: #8b0001;
+            }
+
+        .cart-total {
+            text-align: right;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 2rem 0;
+            padding: 1rem;
+            background-color: #1a1a1a;
+            border-radius: 5px;
+        }
+
+        .checkout-form {
+            background-color: #2c2c2c;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+            .checkout-form h2 {
+                color: #d4af37;
+                margin-bottom: 1.5rem;
+            }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                color: #fff;
+                font-weight: bold;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 0.8rem;
+                background-color: #1a1a1a;
+                border: 1px solid #444;
+                color: #fff;
+                border-radius: 5px;
+                font-family: inherit;
+            }
+
+                .form-group input:focus,
+                .form-group textarea:focus {
+                    outline: none;
+                    border-color: #d4af37;
+                }
+
+                .form-group input.error,
+                .form-group textarea.error {
+                    border-color: #ff4444;
+                }
+
+                .form-group input.valid,
+                .form-group textarea.valid {
+                    border-color: #4CAF50;
+                }
+
+        .error-message {
+            color: #ff4444;
+            font-size: 0.85em;
+            margin-top: 0.3rem;
+            min-height: 1.2em;
+        }
+
+        .btn-magic {
+            background: #740001;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-weight: bold;
+            width: 100%;
+        }
+
+            .btn-magic:disabled {
+                background: #555;
+                cursor: not-allowed;
+                opacity: 0.6;
+            }
+
+            .btn-magic:not(:disabled):hover {
+                background: #d4af37;
+                color: #000;
+            }
+
+        .btn-secondary {
+            background-color: #444;
+            color: #d4af37;
+            border: none;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 1rem;
+            transition: 0.3s;
+        }
+
+            .btn-secondary:hover {
+                background-color: #555;
+            }
+
+        .button-group {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .validation-summary {
+            background-color: rgba(255, 68, 68, 0.1);
+            border-left: 3px solid #ff4444;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+            .validation-summary.show {
+                display: block;
+            }
+
+            .validation-summary h3 {
+                color: #ff4444;
+                margin-bottom: 0.5rem;
+            }
+
+            .validation-summary ul {
+                margin-left: 1.5rem;
+                color: #ff4444;
+            }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid #444;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 3rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="platform.html" class="logo">LORD VOLDEMORT</a>
+            <ul class="nav-menu">
+                <li><a href="platform.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="blog.html">Пророк</a></li>
+                <li><a href="contacts.html">Совиная почта</a></li>
+            </ul>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <a href="cart.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Ваша корзина</h1>
+
+        <div id="cart-content">
+            <div class="cart-container" id="cart-items"></div>
+
+            <div class="cart-total" id="cart-total"></div>
+
+            <div class="checkout-form">
+                <h2>Оформление заказа</h2>
+
+                <div class="validation-summary" id="validation-summary">
+                    <h3>⚠️ Исправьте ошибки:</h3>
+                    <ul id="validation-list"></ul>
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-name">Имя и фамилия *</label>
+                    <input type="text" id="customer-name" placeholder="Введите ваше имя" maxlength="50">
+                    <div class="error-message" id="name-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-phone">Телефон *</label>
+                    <input type="tel" id="customer-phone" placeholder="+7 (999) 999-99-99">
+                    <div class="error-message" id="phone-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-email">Email *</label>
+                    <input type="email" id="customer-email" placeholder="example@mail.ru">
+                    <div class="error-message" id="email-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-address">Адрес доставки *</label>
+                    <textarea id="customer-address" rows="3" placeholder="Город, улица, дом, квартира"></textarea>
+                    <div class="error-message" id="address-error"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-comment">Комментарий к заказу</label>
+                    <textarea id="customer-comment" rows="2" placeholder="Дополнительная информация (необязательно)"></textarea>
+                </div>
+
+                <div class="button-group">
+                    <a href="catalog.html" class="btn-secondary">Продолжить покупки</a>
+                    <button type="button" class="btn-magic" id="checkout-btn" onclick="validateAndCheckout()">Оформить заказ</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="empty-cart" class="empty-cart" style="display: none;">
+            <h2>Корзина пуста</h2>
+            <p>Добавьте товары из каталога</p>
+            <a href="catalog.html" class="btn-magic" style="display: inline-block; margin-top: 1rem; text-decoration: none; width: auto;">Перейти в каталог</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© покровская софья тот еще дамлдор</p>
+    </footer>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        function renderCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalContainer = document.getElementById('cart-total');
+            const emptyCart = document.getElementById('empty-cart');
+            const cartContent = document.getElementById('cart-content');
+
+            if (cart.length === 0) {
+                cartContent.style.display = 'none';
+                emptyCart.style.display = 'block';
+                return;
+            }
+
+            cartContent.style.display = 'block';
+            emptyCart.style.display = 'none';
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                html += `
+                        <div class="cart-item">
+                            <img src="${item.image}" alt="${item.name}">
+                            <div class="cart-item-info">
+                                <h3>${item.name}</h3>
+                                <div class="cart-item-price">${item.price} галлеонов</div>
+                                <div class="quantity-control">
+                                    <button onclick="updateQuantity(${index}, -1)">−</button>
+                                    <span>${item.quantity}</span>
+                                    <button onclick="updateQuantity(${index}, 1)">+</button>
+                                </div>
+                            </div>
+                            <div style="font-weight: bold; min-width: 120px; text-align: right;">
+                                ${itemTotal} галлеонов
+                            </div>
+                            <button class="remove-btn" onclick="removeItem(${index})">Удалить</button>
+                        </div>
+                    `;
+            });
+
+            cartItemsContainer.innerHTML = html;
+            cartTotalContainer.innerHTML = `Итого: ${total} галлеонов`;
+        }
+
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            updateCartCount();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+            updateCartCount();
+        }
+
+        function validateField(fieldId, errorId, validationFn, errorMessage) {
+            const field = document.getElementById(fieldId);
+            const errorDiv = document.getElementById(errorId);
+            const value = field.value.trim();
+
+            if (!validationFn(value)) {
+                field.classList.add('error');
+                field.classList.remove('valid');
+                errorDiv.textContent = errorMessage;
+                return false;
+            } else {
+                field.classList.remove('error');
+                field.classList.add('valid');
+                errorDiv.textContent = '';
+                return true;
+            }
+        }
+
+        function validateName(value) {
+            return value.length >= 2 && value.length <= 50 && /^[а-яa-z\s]+$/i.test(value);
+        }
+
+        function validatePhone(value) {
+            const phoneRegex = /^[\d\s\-\+\(\)]{10,20}$/;
+            return phoneRegex.test(value);
+        }
+
+        function validateEmail(value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(value);
+        }
+
+        function validateAddress(value) {
+            return value.length >= 10;
+        }
+
+        function validateForm() {
+            const errors = [];
+
+            const isNameValid = validateField('customer-name', 'name-error', validateName,
+                'Введите имя (2-50 букв)');
+            if (!isNameValid) errors.push('Неверно заполнено поле "Имя и фамилия"');
+
+            const isPhoneValid = validateField('customer-phone', 'phone-error', validatePhone,
+                'Введите корректный номер телефона');
+            if (!isPhoneValid) errors.push('Неверно заполнено поле "Телефон"');
+
+            const isEmailValid = validateField('customer-email', 'email-error', validateEmail,
+                'Введите корректный email');
+            if (!isEmailValid) errors.push('Неверно заполнено поле "Email"');
+
+            const isAddressValid = validateField('customer-address', 'address-error', validateAddress,
+                'Адрес должен содержать минимум 10 символов');
+            if (!isAddressValid) errors.push('Неверно заполнено поле "Адрес доставки"');
+
+            const validationSummary = document.getElementById('validation-summary');
+            const validationList = document.getElementById('validation-list');
+
+            if (errors.length > 0) {
+                validationSummary.classList.add('show');
+                validationList.innerHTML = errors.map(err => `<li>${err}</li>`).join('');
+                return false;
+            } else {
+                validationSummary.classList.remove('show');
+                return true;
+            }
+        }
+
+        function validateAndCheckout() {
+            if (cart.length === 0) {
+                alert('Корзина пуста! Добавьте товары перед оформлением заказа.');
+                return;
+            }
+
+            if (!validateForm()) {
+                
+                const firstError = document.querySelector('.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                return;
+            }
+
+            const orderData = {
+                items: cart,
+                customer: {
+                    name: document.getElementById('customer-name').value.trim(),
+                    phone: document.getElementById('customer-phone').value.trim(),
+                    email: document.getElementById('customer-email').value.trim(),
+                    address: document.getElementById('customer-address').value.trim(),
+                    comment: document.getElementById('customer-comment').value.trim()
+                },
+                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                date: new Date().toISOString()
+            };
+
+            let orders = JSON.parse(localStorage.getItem('orders')) || [];
+            orders.push(orderData);
+            localStorage.setItem('orders', JSON.stringify(orders));
+
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert('✅ Заказ успешно оформлен!\n\nСпасибо за покупку!\nМы свяжемся с вами в ближайшее время.');
+
+            window.location.href = 'platform.html';
+        }
+
+        document.getElementById('customer-name').addEventListener('input', function () {
+            validateField('customer-name', 'name-error', validateName, 'Введите имя (2-50 букв)');
+        });
+
+        document.getElementById('customer-phone').addEventListener('input', function () {
+            validateField('customer-phone', 'phone-error', validatePhone, 'Введите корректный номер телефона');
+        });
+
+        document.getElementById('customer-email').addEventListener('input', function () {
+            validateField('customer-email', 'email-error', validateEmail, 'Введите корректный email');
+        });
+
+        document.getElementById('customer-address').addEventListener('input', function () {
+            validateField('customer-address', 'address-error', validateAddress, 'Адрес должен содержать минимум 10 символов');
+        });
+
+        renderCart();
+        updateCartCount();
+    </script>
+</body>
+</html>

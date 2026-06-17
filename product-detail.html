@@ -1,0 +1,405 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товар | LORD VOLDEMORT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #1a1a1a;
+            color: #d4af37;
+            min-height: 100vh;
+        }
+
+        nav {
+            background-color: #2c2c2c;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+            .nav-menu a {
+                color: #d4af37;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .nav-menu a:hover {
+                    color: #fff;
+                }
+
+        .cart-icon {
+            font-size: 1.2em;
+            cursor: pointer;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+            .btn-back:hover {
+                color: #d4af37;
+            }
+
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+            background-color: #2c2c2c;
+            padding: 3rem;
+            border-radius: 10px;
+            border: 1px solid #d4af37;
+        }
+
+        .product-image {
+            text-align: center;
+        }
+
+            .product-image img {
+                width: 100%;
+                max-width: 500px;
+                border-radius: 10px;
+                border: 3px solid #d4af37;
+                box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            }
+
+        .product-info h1 {
+            font-size: 2.5em;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .product-price {
+            font-size: 2em;
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        .product-description {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            border-left: 4px solid #d4af37;
+        }
+
+        .product-specs {
+            background-color: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+            .product-specs h2 {
+                color: #d4af37;
+                margin-bottom: 1rem;
+                font-size: 1.5em;
+                border-bottom: 2px solid #d4af37;
+                padding-bottom: 0.5rem;
+            }
+
+            .product-specs ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .product-specs li {
+                padding: 0.7rem 0;
+                color: #aaa;
+                border-bottom: 1px solid #444;
+                display: flex;
+            }
+
+                .product-specs li:last-child {
+                    border-bottom: none;
+                }
+
+                .product-specs li strong {
+                    color: #fff;
+                    min-width: 200px;
+                }
+
+        .btn-magic {
+            background: #740001;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-weight: bold;
+            width: 100%;
+        }
+
+            .btn-magic:hover {
+                background: #d4af37;
+                color: #000;
+            }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid #444;
+        }
+
+        @media (max-width: 768px) {
+            .product-detail {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="platform.html" class="logo">LORD VOLDEMORT</a>
+            <ul class="nav-menu">
+                <li><a href="platform.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="blog.html">Пророк</a></li>
+                <li><a href="contacts.html">Совиная почта</a></li>
+            </ul>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <a href="cart.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <a href="catalog.html" class="btn-back">← Вернуться в каталог</a>
+
+        <div class="product-detail">
+            <div class="product-image">
+                <img id="product-img" src="" alt="Товар">
+            </div>
+
+            <div class="product-info">
+                <h1 id="product-title">Загрузка...</h1>
+                <div id="product-price" class="product-price">0 галлеонов</div>
+
+                <div id="product-description" class="product-description">
+                    Описание загружается...
+                </div>
+
+                <div class="product-specs">
+                    <h2>Характеристики</h2>
+                    <ul id="product-specs-list">
+                        <li>Загрузка...</li>
+                    </ul>
+                </div>
+
+                <button id="add-to-cart-btn" class="btn-magic">Добавить в корзину</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© покровская софья тот еще дамлдор</p>
+    </footer>
+
+    <script>
+       
+        const productsDB = {
+            1: {
+                id: 1,
+                title: "Оборотное зелье",
+                price: 500,
+                image: "https://i.pinimg.com/474x/45/6f/12/456f12221a376246a59412e2896c0de1.jpg",
+                description: "Сложнейшее зелье, позволяющее на один час принять облик другого человека. Требует добавления частицы тела того, в кого вы хотите превратиться (волос, ноготь). Варится ровно месяц в медленном котле при постоянной температуре. Цвет готового зелья зависит от человека, в которого нужно превратиться. Хранить в прохладном месте не более 3 месяцев. Внимание: неправильная варка может привести к необратимым изменениям!",
+                specs: [
+                    { label: "Время варки", value: "1 месяц" },
+                    { label: "Длительность эффекта", value: "1 час" },
+                    { label: "Необходимый ингредиент", value: "Часть тела объекта (волос/ноготь)" },
+                    { label: "Срок хранения", value: "3 месяца" },
+                    { label: "Сложность приготовления", value: "Высшая (уровень 7+)" },
+                    { label: "Побочные эффекты", value: "Возможны при ошибках в варке" }
+                ]
+            },
+            2: {
+                id: 2,
+                title: "Волшебная палочка",
+                price: 100,
+                image: "https://avatars.mds.yandex.net/get-mpic/16430688/2a00000199f05a0e75114c44bbfd9688e8be/orig",
+                description: "Уникальная волшебная палочка из магазина Олливандера. Каждая палочка выбирает своего волшебника. Изготовлена из редких пород дерева с сердцевиной из магических материалов. Длина и гибкость подбираются индивидуально под владельца. Идеально подходит для изучения базовых и продвинутых заклинаний. Палочка запоминает заклинания владельца и становится сильнее со временем.",
+                specs: [
+                    { label: "Материал древесины", value: "Дуб/Ива/Вишня/Тис (на выбор)" },
+                    { label: "Сердцевина", value: "Волос единорога/Перо феникса/Нить сердца дракона" },
+                    { label: "Длина", value: "10-15 дюймов" },
+                    { label: "Гибкость", value: "Средняя/Жесткая/Податливая" },
+                    { label: "Верность", value: "Только одному владельцу" },
+                    { label: "Гарантия", value: "10 лет" }
+                ]
+            },
+            3: {
+                id: 3,
+                title: "Котел для зелий",
+                price: 200,
+                image: "https://avatars.mds.yandex.net/get-mpic/6236983/img_id5405379519985909688.jpeg/orig",
+                description: "Профессиональный оловянный котел для варки зелий. Объем 5 галлонов, идеально подходит для большинства школьных и университетских заданий. Ручки с теплоизоляцией, устойчивое дно. Выдерживает температуру до 500°C. В комплекте идет инструкция по уходу и базовые рецепты. Изготовлен мастерами из Диагона по старинным технологиям.",
+                specs: [
+                    { label: "Материал", value: "Олово высшего качества" },
+                    { label: "Объем", value: "5 галлонов (22.7 литра)" },
+                    { label: "Максимальная температура", value: "500°C" },
+                    { label: "Ручки", value: "С теплоизоляцией" },
+                    { label: "Вес", value: "3.5 кг" },
+                    { label: "Производство", value: "Англия, Косой переулок" }
+                ]
+            },
+            4: {
+                id: 4,
+                title: "Почтовая сова",
+                price: 800,
+                image: "https://avatars.mds.yandex.net/i?id=eefc590ae88eacfccf8417f1b7d79edb_sr-4270998-images-thumbs&n=13",
+                description: "Верная почтовая сова для доставки корреспонденции. Обучена находить адресата по всей Великобритании и за ее пределами. Может нести посылки весом до 2 кг. Привязывается к хозяину и возвращается домой даже из самых отдаленных мест. В комплекте клетка и корм на месяц. Сова понимает команды и может ждать ответа.",
+                specs: [
+                    { label: "Порода", value: "Неясыть/Сипуха/Полярная сова (на выбор)" },
+                    { label: "Скорость полета", value: "До 80 км/ч" },
+                    { label: "Максимальный груз", value: "2 кг" },
+                    { label: "Дальность полета", value: "Неограничена" },
+                    { label: "Возраст", value: "2 года" },
+                    { label: "Комплект", value: "Клетка, корм на месяц, поилка, перчатки" }
+                ]
+            },
+            5: {
+                id: 5,
+                title: "Мантия волшебника",
+                price: 300,
+                image: "https://ir.ozone.ru/s3/multimedia-1-d/8503278205.jpg",
+                description: "Классическая черная мантия волшебника из качественной шерсти. Подходит для официальных церемоний, экзаменов и повседневной носки. Размер регулируется магическими застежками. Внутренние карманы с чарами расширения вмещают до 10 кг предметов. Устойчива к заклинаниям и погодным условиям. На подкладке вышит герб Хогвартса.",
+                specs: [
+                    { label: "Материал", value: "Шерсть с добавлением драконьей чешуи" },
+                    { label: "Размер", value: "Универсальный (регулируется)" },
+                    { label: "Цвет", value: "Черный" },
+                    { label: "Карманы", value: "С чарами расширения (до 10 кг)" },
+                    { label: "Защита", value: "От слабых заклинаний и непогоды" },
+                    { label: "Уход", value: "Химчистка или заклинание Incendio" }
+                ]
+            },
+            6: {
+                id: 6,
+                title: "Шар предсказаний",
+                price: 1500,
+                image: "https://avatars.mds.yandex.net/get-mpic/12485547/2a0000018eb1dcdb86d266d9220bb3c14b83/orig",
+                description: "Настоящий хрустальный шар для прорицаний. Позволяет видеть туманные образы будущего при правильном использовании. Требует концентрации и чистоты помыслов. Чем одареннее прорицатель, тем яснее видения. Изготовлен из горного хрусталя мастерами Древнего Востока. В комплекте подставка из черного дерева и инструкция по медитации.",
+                specs: [
+                    { label: "Материал", value: "Горный хрусталь" },
+                    { label: "Диаметр", value: "30 см" },
+                    { label: "Вес", value: "5 кг" },
+                    { label: "Подставка", value: "Черное дерево с резьбой" },
+                    { label: "Чувствительность", value: "Высокая" },
+                    { label: "Происхождение", value: "Индия, Тибет" }
+                ]
+            }
+        };
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        function addToCart(name, price, image) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, image, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            alert('✅ ' + name + ' добавлен в корзину!');
+        }
+
+        
+        window.onload = function () {
+            updateCartCount();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id'));
+            const product = productsDB[productId];
+
+            if (product) {
+                document.getElementById('product-img').src = product.image;
+                document.getElementById('product-img').alt = product.title;
+                document.getElementById('product-title').innerText = product.title;
+                document.getElementById('product-price').innerText = product.price + ' галлеонов';
+                document.getElementById('product-description').innerText = product.description;
+
+                const specsList = document.getElementById('product-specs-list');
+                specsList.innerHTML = '';
+                product.specs.forEach(spec => {
+                    const li = document.createElement('li');
+                    li.innerHTML = '<strong>' + spec.label + ':</strong> <span>' + spec.value + '</span>';
+                    specsList.appendChild(li);
+                });
+
+                document.getElementById('add-to-cart-btn').onclick = function () {
+                    addToCart(product.title, product.price, product.image);
+                };
+
+                document.title = product.title + ' | LORD VOLDEMORT';
+            } else {
+                document.querySelector('.container').innerHTML = `
+                            <div style="text-align: center; padding: 5rem;">
+                                <h1 style="font-size: 3em; margin-bottom: 1rem; color: #d4af37;">😕 Товар не найден</h1>
+                                <p style="font-size: 1.2em; color: #888; margin-bottom: 2rem;">
+                                    К сожалению, такой товар не существует или был удален
+                                </p>
+                                <a href="catalog.html" class="btn-magic" style="display: inline-block; text-decoration: none; width: auto;">
+                                    Вернуться в каталог
+                                </a>
+                            </div>
+                        `;
+            }
+        };
+    </script>
+</body>
+</html>

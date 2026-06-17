@@ -1,0 +1,413 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LORD VOLDEMORT | Регистрация</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background-color: #1a1a1a;
+            color: #f4e4bc;
+            line-height: 1.6;
+        }
+
+        .login-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1543169107-1b9186d9734e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center/cover;
+        }
+
+        .login-box {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid #d4af37;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        h1 {
+            color: #d4af37;
+            text-shadow: 2px 2px 4px #000;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #2c2c2c;
+            border: 1px solid #555;
+            color: #fff;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+            input:focus, textarea:focus, select:focus {
+                outline: none;
+                border-color: #d4af37;
+            }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            color: #ddd;
+        }
+
+        .error-message {
+            color: #ff4444;
+            font-size: 12px;
+            text-align: left;
+            margin-top: -5px;
+            margin-bottom: 10px;
+            min-height: 15px;
+        }
+
+        input.error, textarea.error, select.error {
+            border-color: #ff4444;
+        }
+
+        input.valid, textarea.valid, select.valid {
+            border-color: #4CAF50;
+        }
+
+        select.highlighted {
+            border: 3px solid #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-magic {
+            background: #555;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: 0.3s;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+            .btn-magic:disabled {
+                background: #555;
+                cursor: not-allowed;
+                opacity: 0.6;
+            }
+
+            .btn-magic:not(:disabled) {
+                background: #740001;
+            }
+
+                .btn-magic:not(:disabled):hover {
+                    background: #d4af37;
+                    color: #000;
+                }
+
+        #validation-messages {
+            color: #ff4444;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+            #validation-messages div {
+                margin: 5px 0;
+                padding: 5px;
+                background: rgba(255, 68, 68, 0.1);
+                border-left: 3px solid #ff4444;
+            }
+
+        #loading-indicator {
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #d4af37;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        footer-link {
+            font-size: 12px;
+            margin-top: 15px;
+            display: block;
+        }
+
+            footer-link a {
+                color: #d4af37;
+            }
+    </style>
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="login-box">
+            <h1>LORD VOLDEMORT</h1>
+            <p>Регистрация</p>
+            <form id="regForm">
+                <input type="text" id="phone" placeholder="Номер телефона (+7...)" required>
+                <div class="error-message" id="phone-error"></div>
+
+                <input type="text" id="contact" placeholder="Контактное лицо (имя)" maxlength="25" required>
+                <div class="error-message" id="contact-error"></div>
+
+                <label>Выбери факультет:</label>
+                <select id="faculty">
+                    <option value="">Не выбрано</option>
+                    <option value="gryffindor">ГРИФИНДОР</option>
+                    <option value="slytherin">СЛИЗЕРИН</option>
+                    <option value="ravenclaw">КОГТЕВРАН</option>
+                    <option value="hufflepuff">ПУФФЕНДУЙ</option>
+                </select>
+
+                <textarea id="support" placeholder="Поддержка Дамблдора (50-1024 символа, необязательно)" rows="3"></textarea>
+                <div class="error-message" id="support-error"></div>
+
+                <button type="submit" id="submitBtn" class="btn-magic" disabled>ДАЛЕЕ НА ПЛАТФОРМУ 9 ¾</button>
+                <div id="validation-messages"></div>
+                <div id="loading-indicator">
+                    <div class="spinner"></div>
+                    <p style="color: #d4af37;">Загрузка...</p>
+                </div>
+            </form>
+            <footer-link>
+                <a href="https://vk.com" target="_blank">Написать нам в VK</a>
+            </footer-link>
+        </div>
+    </div>
+
+    <script>
+        
+        const phoneInput = document.getElementById('phone');
+        const contactInput = document.getElementById('contact');
+        const supportInput = document.getElementById('support');
+        const facultySelect = document.getElementById('faculty');
+        const submitBtn = document.getElementById('submitBtn');
+        const regForm = document.getElementById('regForm');
+
+        function validatePhone(value) {
+            const phoneRegex = /^\+\d{11,15}$/;
+            return phoneRegex.test(value);
+        }
+
+        phoneInput.addEventListener('input', function (e) {
+            let value = e.target.value;
+
+            value = value.replace(/[^\d+]/g, '');
+
+            if (value.indexOf('+') > 0) {
+                value = '+' + value.replace(/\+/g, '');
+            }
+
+            e.target.value = value;
+
+            const errorDiv = document.getElementById('phone-error');
+            if (value === '') {
+                errorDiv.textContent = '';
+                e.target.classList.remove('valid', 'error');
+            } else if (!validatePhone(value)) {
+                errorDiv.textContent = 'Формат: +11-15 цифр (например, +79001234567)';
+                e.target.classList.remove('valid');
+                e.target.classList.add('error');
+            } else {
+                errorDiv.textContent = '';
+                e.target.classList.remove('error');
+                e.target.classList.add('valid');
+            }
+
+            checkFormValidity();
+        });
+
+       
+        contactInput.addEventListener('input', function (e) {
+            let value = e.target.value.toLowerCase();
+            e.target.value = value;
+
+            const errorDiv = document.getElementById('contact-error');
+            if (value === '') {
+                errorDiv.textContent = '';
+                e.target.classList.remove('valid', 'error');
+            } else if (value.length > 25) {
+                errorDiv.textContent = 'Максимум 25 символов';
+                e.target.classList.remove('valid');
+                e.target.classList.add('error');
+            } else if (!/^[а-яa-z]+$/.test(value)) {
+                errorDiv.textContent = 'Только буквы нижнего регистра';
+                e.target.classList.remove('valid');
+                e.target.classList.add('error');
+            } else {
+                errorDiv.textContent = '';
+                e.target.classList.remove('error');
+                e.target.classList.add('valid');
+            }
+
+            checkFormValidity();
+        });
+
+        supportInput.addEventListener('input', function (e) {
+            let value = e.target.value;
+
+            const errorDiv = document.getElementById('support-error');
+            if (value === '') {
+                errorDiv.textContent = '';
+                e.target.classList.remove('valid', 'error');
+            } else if (value.length < 50) {
+                errorDiv.textContent = `Минимум 50 символов (сейчас: ${value.length})`;
+                e.target.classList.remove('valid');
+                e.target.classList.add('error');
+            } else if (value.length > 1024) {
+                errorDiv.textContent = `Максимум 1024 символа (сейчас: ${value.length})`;
+                e.target.classList.remove('valid');
+                e.target.classList.add('error');
+            } else if (/[!@#$%^&*()_+{}\[\]:;<>,.?~\\\/|"]/.test(value)) {
+                errorDiv.textContent = 'Специальные символы не допускаются';
+                e.target.classList.remove('valid');
+                e.target.classList.add('error');
+            } else {
+                errorDiv.textContent = '';
+                e.target.classList.remove('error');
+                e.target.classList.add('valid');
+            }
+
+            checkFormValidity();
+        });
+
+        facultySelect.addEventListener('change', function (e) {
+            if (e.target.value) {
+                e.target.classList.add('highlighted');
+            } else {
+                e.target.classList.remove('highlighted');
+            }
+            checkFormValidity();
+        });
+
+        function checkFormValidity() {
+            const phoneValid = validatePhone(phoneInput.value);
+            const contactValid = contactInput.value.length > 0 &&
+                contactInput.value.length <= 25 &&
+                /^[а-яa-z]+$/.test(contactInput.value);
+
+            const supportValue = supportInput.value;
+            let supportValid = true;
+
+            if (supportValue !== '') {
+                supportValid = supportValue.length >= 50 &&
+                    supportValue.length <= 1024 &&
+                    !/[!@#$%^&*()_+{}\[\]:;<>,.?~\\\/|"]/.test(supportValue);
+            }
+
+            const errors = [];
+
+            if (!phoneValid) {
+                if (phoneInput.value === '') {
+                    errors.push('❌ Не заполнено поле "Номер телефона"');
+                } else {
+                    errors.push('❌ Неверный формат телефона (нужно: +11-15 цифр)');
+                }
+            }
+
+            if (!contactValid) {
+                if (contactInput.value === '') {
+                    errors.push('❌ Не заполнено поле "Контактное лицо"');
+                } else if (contactInput.value.length > 25) {
+                    errors.push('❌ Превышен лимит символов в поле "Контактное лицо" (макс. 25)');
+                } else if (!/^[а-яa-z]+$/.test(contactInput.value)) {
+                    errors.push('❌ Поле "Контактное лицо" должно содержать только буквы нижнего регистра');
+                }
+            }
+
+            if (!supportValid && supportValue !== '') {
+                if (supportValue.length < 50) {
+                    errors.push(`❌ Поле "Поддержка Дамблдора" слишком короткое (мин. 50 символов, сейчас: ${supportValue.length})`);
+                } else if (supportValue.length > 1024) {
+                    errors.push(`❌ Превышен лимит символов в поле "Поддержка Дамблдора" (макс. 1024, сейчас: ${supportValue.length})`);
+                } else if (/[!@#$%^&*()_+{}\[\]:;<>,.?~\\\/|"]/.test(supportValue)) {
+                    errors.push('❌ Поле "Поддержка Дамблдора" содержит недопустимые символы');
+                }
+            }
+
+            const validationMessages = document.getElementById('validation-messages');
+            if (errors.length > 0) {
+                validationMessages.innerHTML = '<div style="margin-bottom: 10px; color: #ff4444; font-weight: bold;">Кнопка "ДАЛЕЕ" не работает по следующим причинам:</div>' +
+                    errors.map(err => `<div>${err}</div>`).join('');
+            } else {
+                validationMessages.innerHTML = '';
+            }
+
+            if (phoneValid && contactValid && supportValid) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        }
+
+      
+        regForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            let slowConnection = false;
+
+            if (connection) {
+                const speed = connection.downlink;
+                if (speed && speed < 400.82) {
+                    slowConnection = true;
+                }
+            }
+
+            if (slowConnection) {
+                document.getElementById('loading-indicator').style.display = 'block';
+                submitBtn.disabled = true;
+
+                setTimeout(() => {
+                    window.location.href = 'platform.html';
+                }, 2000);
+            } else {
+                const formData = {
+                    phone: phoneInput.value,
+                    contact: contactInput.value,
+                    faculty: facultySelect.value,
+                    support: supportInput.value
+                };
+                localStorage.setItem('registrationData', JSON.stringify(formData));
+                window.location.href = 'platform.html';
+            }
+        });
+    </script>
+</body>
+</html>

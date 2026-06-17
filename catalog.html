@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товаров | LORD VOLDEMORT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #1a1a1a;
+            color: #d4af37;
+            min-height: 100vh;
+        }
+
+        nav {
+            background-color: #2c2c2c;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+            .nav-menu a {
+                color: #d4af37;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .nav-menu a:hover {
+                    color: #fff;
+                }
+
+        .cart-icon {
+            font-size: 1.2em;
+            cursor: pointer;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: #2c2c2c;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid #444;
+        }
+
+            .product-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+            }
+
+            .product-card img {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+            }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+            .product-info h3 {
+                margin-bottom: 0.5rem;
+                color: #d4af37;
+            }
+
+        .price {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .product-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-size: 0.9em;
+        }
+
+        .btn-primary {
+            background-color: #d4af37;
+            color: #1a1a1a;
+        }
+
+            .btn-primary:hover {
+                background-color: #b5952f;
+            }
+
+        .btn-secondary {
+            background-color: #444;
+            color: #d4af37;
+        }
+
+            .btn-secondary:hover {
+                background-color: #555;
+            }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid #444;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="platform.html" class="logo">LORD VOLDEMORT</a>
+            <ul class="nav-menu">
+                <li><a href="platform.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="blog.html">Пророк</a></li>
+                <li><a href="contacts.html">Совиная почта</a></li>
+            </ul>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <a href="cart.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Каталог магических товаров</h1>
+
+        <div class="products">
+            
+            <div class="product-card">
+                <img src="https://i.pinimg.com/474x/45/6f/12/456f12221a376246a59412e2896c0de1.jpg" alt="Оборотное зелье">
+                <div class="product-info">
+                    <h3>Оборотное зелье</h3>
+                    <div class="price">500 галлеонов</div>
+                    <div class="product-buttons">
+                        <button class="btn btn-primary" onclick="addToCart('Оборотное зелье', 500, 'https://i.pinimg.com/474x/45/6f/12/456f12221a376246a59412e2896c0de1.jpg')">В корзину</button>
+                        <a href="product-detail.html?id=1" class="btn btn-secondary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://avatars.mds.yandex.net/get-mpic/16430688/2a00000199f05a0e75114c44bbfd9688e8be/orig" alt="Палочка">
+                <div class="product-info">
+                    <h3>Палочка</h3>
+                    <div class="price">100 галлеонов</div>
+                    <div class="product-buttons">
+                        <button class="btn btn-primary" onclick="addToCart('Палочка', 100, 'https://avatars.mds.yandex.net/get-mpic/16430688/2a00000199f05a0e75114c44bbfd9688e8be/orig')">В корзину</button>
+                        <a href="product-detail.html?id=2" class="btn btn-secondary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://avatars.mds.yandex.net/get-mpic/6236983/img_id5405379519985909688.jpeg/orig" alt="Котел">
+                <div class="product-info">
+                    <h3>Котел</h3>
+                    <div class="price">200 галлеонов</div>
+                    <div class="product-buttons">
+                        <button class="btn btn-primary" onclick="addToCart('Котел', 200, 'https://avatars.mds.yandex.net/get-mpic/6236983/img_id5405379519985909688.jpeg/orig')">В корзину</button>
+                        <a href="product-detail.html?id=3" class="btn btn-secondary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://avatars.mds.yandex.net/i?id=eefc590ae88eacfccf8417f1b7d79edb_sr-4270998-images-thumbs&n=13" alt="Сова">
+                <div class="product-info">
+                    <h3>Сова</h3>
+                    <div class="price">800 галлеонов</div>
+                    <div class="product-buttons">
+                        <button class="btn btn-primary" onclick="addToCart('Сова', 800, 'https://avatars.mds.yandex.net/i?id=eefc590ae88eacfccf8417f1b7d79edb_sr-4270998-images-thumbs&n=13')">В корзину</button>
+                        <a href="product-detail.html?id=4" class="btn btn-secondary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://ir.ozone.ru/s3/multimedia-1-d/8503278205.jpg" alt="Мантия">
+                <div class="product-info">
+                    <h3>Мантия</h3>
+                    <div class="price">300 галлеонов</div>
+                    <div class="product-buttons">
+                        <button class="btn btn-primary" onclick="addToCart('Мантия', 300, 'https://ir.ozone.ru/s3/multimedia-1-d/8503278205.jpg')">В корзину</button>
+                        <a href="product-detail.html?id=5" class="btn btn-secondary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="product-card">
+                <img src="https://avatars.mds.yandex.net/get-mpic/12485547/2a0000018eb1dcdb86d266d9220bb3c14b83/orig" alt="Шар предсказаний">
+                <div class="product-info">
+                    <h3>Шар предсказаний</h3>
+                    <div class="price">1500 галлеонов</div>
+                    <div class="product-buttons">
+                        <button class="btn btn-primary" onclick="addToCart('Шар предсказаний', 1500, 'https://avatars.mds.yandex.net/get-mpic/12485547/2a0000018eb1dcdb86d266d9220bb3c14b83/orig')">В корзину</button>
+                        <a href="product-detail.html?id=6" class="btn btn-secondary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© покровская софья тот еще дамлдор.</p>
+    </footer>
+
+    <script>
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        function addToCart(name, price, image) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, image, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            alert('✅ ' + name + ' добавлен в корзину!');
+        }
+
+        updateCartCount();
+    </script>
+</body>
+</html>

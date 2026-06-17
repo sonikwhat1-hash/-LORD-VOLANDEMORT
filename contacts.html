@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Совиная почта | LORD VOLDEMORT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #1a1a1a;
+            color: #d4af37;
+            min-height: 100vh;
+        }
+
+        nav {
+            background-color: #2c2c2c;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+            .nav-menu a {
+                color: #d4af37;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .nav-menu a:hover {
+                    color: #fff;
+                }
+
+        .cart-icon {
+            font-size: 1.2em;
+            cursor: pointer;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 2.5em;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            background-color: #2c2c2c;
+            padding: 2.5rem;
+            border-radius: 10px;
+            border: 1px solid #444;
+        }
+
+            .contact-info h2 {
+                margin-bottom: 1.5rem;
+                color: #d4af37;
+                font-size: 1.8em;
+            }
+
+        .contact-detail {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+            .contact-detail strong {
+                color: #fff;
+                display: block;
+                margin-bottom: 0.3rem;
+            }
+
+            .contact-detail p {
+                color: #ccc;
+            }
+
+        .owl-image-container {
+            text-align: center;
+        }
+
+            .owl-image-container img {
+                width: 100%;
+                max-width: 400px;
+                border-radius: 10px;
+                border: 3px solid #d4af37;
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            }
+
+        .owl-caption {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #888;
+        }
+
+        .contact-form {
+            grid-column: 1 / -1;
+            background-color: #2c2c2c;
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            border: 1px solid #444;
+        }
+
+            .contact-form h2 {
+                margin-bottom: 1.5rem;
+                color: #d4af37;
+            }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                color: #fff;
+                font-weight: bold;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 0.8rem;
+                background-color: #1a1a1a;
+                border: 1px solid #444;
+                color: #fff;
+                border-radius: 5px;
+                font-family: inherit;
+            }
+
+                .form-group input:focus,
+                .form-group textarea:focus {
+                    outline: none;
+                    border-color: #d4af37;
+                }
+
+        .btn-submit {
+            background-color: #740001;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+            .btn-submit:hover {
+                background-color: #d4af37;
+                color: #000;
+            }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid #444;
+        }
+
+        @media (max-width: 768px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="platform.html" class="logo">LORD VOLDEMORT</a>
+            <ul class="nav-menu">
+                <li><a href="platform.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="blog.html">Пророк</a></li>
+                <li><a href="contacts.html">Совиная почта</a></li>
+            </ul>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <a href="cart.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1> Совиная почта</h1>
+        <p style="text-align: center; font-size: 1.2em; color: #888; margin-bottom: 2rem;">
+            Свяжитесь с нами любым удобным способом
+        </p>
+
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h2>Наш адрес</h2>
+
+                <div class="contact-detail">
+                    <strong> Адрес:</strong>
+                    <p>Испошка, ул. Энгельса 23</p>
+                </div>
+
+                <div class="contact-detail">
+                    <strong> Email:</strong>
+                    <p>albus.dumbledore@hogwarts.magic</p>
+                </div>
+
+                <div class="contact-detail">
+                    <strong>⏰ Часы работы:</strong>
+                    <p>
+                        Пн-Пт: с 9:00 до 18:00<br>
+                        Сб: с 10:00 до 15:00<br>
+                        Вс: выходной (совы отдыхают)
+                    </p>
+                </div>
+
+                <div class="contact-detail">
+                    <strong>📞 Телефон:</strong>
+                    <p>+7 (999) 123-45-67</p>
+                </div>
+            </div>
+
+            <div class="owl-image-container">
+                <img src="https://avatars.mds.yandex.net/i?id=eefc590ae88eacfccf8417f1b7d79edb_sr-4270998-images-thumbs&n=13" alt="Сова-почтальон">
+                <div class="owl-caption">
+                    "Наши совы доставят ваше сообщение в любую точку магического мира"
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2>Отправить сообщение</h2>
+                <form onsubmit="event.preventDefault(); alert('Ваше сообщение отправлено! Мы ответим вам в ближайшее время.');">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Тема</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">🦉 Отправить сову</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© покровская софья тот еще дамлдор</p>
+    </footer>
+
+    <script>
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        updateCartCount();
+    </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ежедневный Пророк | LORD VOLDEMORT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #1a1a1a;
+            color: #d4af37;
+            min-height: 100vh;
+        }
+
+        nav {
+            background-color: #2c2c2c;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+            .nav-menu a {
+                color: #d4af37;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .nav-menu a:hover {
+                    color: #fff;
+                }
+
+        .cart-icon {
+            font-size: 1.2em;
+            cursor: pointer;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .newspaper-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 3px double #d4af37;
+            padding-bottom: 1rem;
+        }
+
+            .newspaper-header h1 {
+                font-size: 3.5em;
+                text-transform: uppercase;
+                letter-spacing: 5px;
+                margin-bottom: 0.5rem;
+            }
+
+        .newspaper-date {
+            font-style: italic;
+            color: #888;
+            font-size: 1.2em;
+        }
+
+        .article {
+            background-color: #2c2c2c;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+            border: 1px solid #444;
+        }
+
+            .article h2 {
+                font-size: 2em;
+                margin-bottom: 1rem;
+                color: #fff;
+            }
+
+        .article-meta {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .article p {
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 1rem;
+            font-size: 1.1em;
+            text-align: justify;
+        }
+
+        .article-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            border: 1px solid #555;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #d4af37;
+            border-left: 4px solid #d4af37;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-size: 1.2em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid #444;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="platform.html" class="logo">LORD VOLDEMORT</a>
+            <ul class="nav-menu">
+                <li><a href="platform.html">Главная</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="blog.html">Пророк</a></li>
+                <li><a href="contacts.html">Совиная почта</a></li>
+            </ul>
+        </div>
+        <div style="display: flex; align-items: center;">
+            <a href="cart.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="newspaper-header">
+            <h1>Ежедневный Пророк</h1>
+            <div class="newspaper-date">Выпуск от 17 июня 2026 года | Цена: 5 кнатов</div>
+        </div>
+
+        <article class="article">
+           
+            <h2>Хогвартс объявляет набор на новый учебный год!</h2>
+            <span class="article-meta">Автор: Рита Скитер | Рубрика: Образование</span>
+            <p>Директор школы чародейства и волшебства Хогвартс официально подтвердил, что прием писем для первокурсников уже начался. Совиная почта работает в усиленном режиме, доставляя приглашения по всему магическому сообществу Великобритании.</p>
+            <p>В этом году ожидается рекордное количество заявок на факультет Слизерин, что связывают с недавними успехами выпускников этого факультета в Министерстве Магии. Грозный охранник входа в подземелья, Барон, был замечен в unusually хорошем настроении.</p>
+            <div class="quote">"Мы ждем самых талантливых молодых волшебников, независимо от их происхождения. Магия объединяет!" — заявил представитель приемной комиссии.</div>
+        </article>
+
+        <article class="article">
+            <h2>Победа сборной Англии по Квиддичу!</h2>
+            <span class="article-meta">Автор: Спортивный отдел | Рубрика: Спорт</span>
+            <p>Вчера на стадионе в Кардиффе состоялся финал Кубка мира по квиддичу. Сборная Англии одержала блестящую победу над командой Болгарии со счетом 280:190. Решующим моментом стал невероятный сейк ловеца английской команды, который поймал снитч всего в сантиметре от земли.</p>
+            <p>Метеоры, новая модель гоночных метел, показали себя превосходно. Производители уже заявили о начале продаж лимитированной серии в честь победы. Цены на билеты вторичного рынка взлетели до небес.</p>
+        </article>
+
+        <article class="article">
+           
+            <h2>Тайны Косого Переулка: Что скрывают магазины?</h2>
+            <span class="article-meta">Автор: Независимый журналист | Рубрика: Расследования</span>
+            <p>Наш корреспондент провел неделю в Косом переулке и выяснил, что некоторые магазины используют запрещенные чары для привлечения клиентов. В частности, в лавке "Волшебные звери" были обнаружены следы приворотного зелья в воздухе.</p>
+            <p>Инспекция Министерства Магии уже выехала с проверкой. Владелец магазина, мистер Буркс, отказывается от комментариев, но источники сообщают, что он пытается скрыть запасы редких ингредиентов.</p>
+        </article>
+
+    </div>
+
+    <footer>
+        <p>© покровская софья тот еще дамлдор | Ежедневный Пророк</p>
+    </footer>
+
+    <script>
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+        updateCartCount();
+    </script>
+</body>
+</html>
